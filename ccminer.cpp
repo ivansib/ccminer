@@ -307,6 +307,7 @@ Options:\n\
 			x13         X13 (MaruCoin)\n\
 			x14         X14\n\
 			x15         X15\n\
+                        x16gs       Sibcoin (x16gs)\n\
 			x16r        X16R (Raven)\n\
 			x16s        X16S\n\
 			x17         X17\n\
@@ -2313,6 +2314,7 @@ static void *miner_thread(void *userdata)
 			case ALGO_SCRYPT:
 			case ALGO_SONOA:
 			case ALGO_VELTOR:
+			case ALGO_X16GS:
 				minmax = 0x80000;
 				break;
 			case ALGO_CRYPTOLIGHT:
@@ -2532,6 +2534,9 @@ static void *miner_thread(void *userdata)
 			break;
 		case ALGO_SIB:
 			rc = scanhash_sib(thr_id, &work, max_nonce, &hashes_done);
+			break;
+		case ALGO_X16GS:
+			rc = scanhash_x16gs(thr_id, &work, max_nonce, &hashes_done);
 			break;
 		case ALGO_SONOA:
 			rc = scanhash_sonoa(thr_id, &work, max_nonce, &hashes_done);
